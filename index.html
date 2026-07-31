@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+海上跨域反恐处突智能医疗协同平台
+</title>
+
+
+<style>
+
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Microsoft YaHei";
+
+}
+
+
+body{
+
+background:#061522;
+color:#d9efff;
+
+height:100vh;
+
+}
+
+
+
+/**************
+顶部导航
+***************/
+
+
+.header{
+
+height:75px;
+
+background:#09243d;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 35px;
+
+border-bottom:1px solid #12618c;
+
+}
+
+.knowledge-image{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#071b2d;
+
+    border-radius:12px;
+
+    padding:15px;
+
+}
+
+.knowledge-image img{
+
+    width:100%;
+
+    max-width:1200px;   /* 最大宽度，可根据图片调整 */
+
+    height:auto;
+
+    border-radius:10px;
+
+    display:block;
+
+}
+
+.analysis-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.analysis-item{
+
+    flex:1;
+
+    background:#071b2d;
+
+    border:1px solid #174b70;
+
+    border-radius:10px;
+
+    padding:8px;
+
+}
+
+.analysis-item img{
+
+    width:100%;
+
+    height:170px;
+
+    object-fit:contain;
+
+}
+
+.header h1{
+
+font-size:28px;
+
+color:#5fe1ff;
+
+}
+
+
+
+.status span{
+
+background:#123754;
+
+padding:8px 18px;
+
+border-radius:20px;
+
+margin-left:12px;
+
+}
+
+
+
+
+/**************
+整体布局
+***************/
+
+
+.container{
+
+display:flex;
+
+height:calc(100vh - 75px);
+
+}
+
+
+
+/**************
+左侧菜单
+***************/
+
+
+.sidebar{
+
+width:230px;
+
+background:#071b2e;
+
+padding:20px;
+
+}
+
+
+
+.menu{
+
+background:#10334f;
+
+padding:15px;
+
+margin-bottom:15px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+
+
+.menu:hover{
+
+background:#15618b;
+
+}
+
+
+
+
+/**************
+主体
+***************/
+
+
+.main{
+
+flex:1;
+
+padding:20px;
+
+overflow:auto;
+
+}
+
+
+
+
+.card{
+
+background:#09243d;
+
+border:1px solid #174d70;
+
+border-radius:15px;
+
+padding:20px;
+
+margin-bottom:20px;
+
+}
+
+
+
+.card h2{
+
+color:#5ee5ff;
+
+margin-bottom:20px;
+
+}
+
+
+
+
+.grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:20px;
+
+}
+
+
+
+
+
+/**************
+地图区域
+***************/
+
+
+.map{
+
+height:330px;
+
+background:
+
+radial-gradient(circle,#145578,#061522);
+
+position:relative;
+
+border-radius:15px;
+
+overflow:hidden;
+
+}
+
+
+
+.ship{
+
+position:absolute;
+
+background:#0875a8;
+
+padding:10px 18px;
+
+border-radius:30px;
+
+}
+
+
+
+.ship.warning{
+
+background:#c43b45;
+
+}
+
+
+
+.s1{
+
+top:80px;
+left:120px;
+
+}
+
+
+.s2{
+
+top:200px;
+left:350px;
+
+}
+
+
+.s3{
+
+top:130px;
+left:600px;
+
+}
+
+
+
+.attack{
+
+position:absolute;
+
+left:300px;
+
+top:140px;
+
+font-size:40px;
+
+color:red;
+
+}
+
+
+
+
+/**************
+伤员总体态势
+***************/
+
+
+.injury{
+
+display:flex;
+
+justify-content:space-around;
+
+text-align:center;
+
+}
+
+
+
+.injury div{
+
+width:22%;
+
+background:#102f48;
+
+padding:15px;
+
+border-radius:12px;
+
+}
+
+
+.num{
+
+font-size:40px;
+
+}
+
+
+
+.danger{
+
+color:#ff5757;
+
+}
+
+
+.middle{
+
+color:#ffc857;
+
+}
+
+
+.safe{
+
+color:#00ff99;
+
+}
+
+
+
+/**************
+表格
+***************/
+
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+
+td,th{
+
+padding:12px;
+
+border-bottom:1px solid #19445f;
+
+}
+
+
+
+
+/**************
+AI专家模型
+***************/
+
+
+.ai{
+
+border-left:5px solid #00d9ff;
+
+background:#061d31;
+
+}
+
+
+
+.chat{
+
+background:#03131f;
+
+padding:15px;
+
+border-radius:10px;
+
+}
+
+
+
+.user{
+
+color:#ffffff;
+
+margin-bottom:15px;
+
+}
+
+
+
+.robot{
+
+color:#61dcff;
+
+line-height:1.8;
+
+}
+
+
+
+
+/**************
+GraphRAG
+***************/
+
+
+.rag-item{
+
+background:#103652;
+
+padding:10px;
+
+margin:8px;
+
+border-radius:10px;
+
+}
+
+
+
+
+
+/**************
+医学知识图谱
+***************/
+
+
+.knowledge{
+
+height:400px;
+
+position:relative;
+
+}
+
+
+
+.node{
+
+position:absolute;
+
+padding:12px 20px;
+
+border-radius:30px;
+
+background:#12648c;
+
+border:1px solid #3bd6ff;
+
+}
+
+
+
+.center{
+
+top:160px;
+
+left:45%;
+
+background:#009bd4;
+
+font-size:20px;
+
+}
+
+
+
+.symptom1{
+
+top:50px;
+
+left:20%;
+
+}
+
+
+
+.symptom2{
+
+top:50px;
+
+right:20%;
+
+}
+
+
+
+.symptom3{
+
+bottom:80px;
+
+left:20%;
+
+}
+
+
+
+.treatment1{
+
+bottom:80px;
+
+right:20%;
+
+}
+
+
+
+.ecmo{
+
+bottom:20px;
+
+left:45%;
+
+background:#007c9c;
+
+}
+
+
+
+
+.line{
+
+position:absolute;
+
+height:2px;
+
+background:#4edcff;
+
+transform-origin:left;
+
+}
+
+
+
+.l1{
+
+top:180px;
+
+left:30%;
+
+width:160px;
+
+transform:rotate(25deg);
+
+}
+
+
+.l2{
+
+top:180px;
+
+right:30%;
+
+width:160px;
+
+transform:rotate(-25deg);
+
+}
+
+
+
+.l3{
+
+top:210px;
+
+left:35%;
+
+width:150px;
+
+transform:rotate(-35deg);
+
+}
+
+
+
+
+/**************
+数据中心
+***************/
+
+
+.data{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:15px;
+
+}
+
+
+
+.data div{
+
+background:#10334f;
+
+padding:20px;
+
+border-radius:10px;
+
+text-align:center;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+
+<h1>
+🌊 海上跨域反恐处突智能医疗协同平台
+</h1>
+
+
+
+<div class="status">
+
+<span>
+任务 M-2026-07231
+</span>
+
+
+<span>
+🟢 网络同步
+</span>
+
+
+<span>
+🚢 舰艇12
+</span>
+
+
+<span>
+🩸伤员48
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="container">
+
+
+<div class="sidebar">
+
+
+<div class="menu">
+🏠 综合态势
+</div>
+
+
+<div class="menu">
+🚢 舰艇协同
+</div>
+
+
+<div class="menu">
+🩸 伤员中心
+</div>
+
+
+<div class="menu">
+🧠 医学专家大模型
+</div>
+
+
+<div class="menu">
+🕸 医学知识图谱
+</div>
+
+
+<div class="menu">
+📊 数据中心
+</div>
+
+
+</div>
+
+
+
+
+<div class="main">
+
+
+<div class="grid">
+
+
+<div>
+
+
+
+<div class="card">
+
+<h2>
+🌊 海域医疗态势
+</h2>
+
+
+<div class="map">
+
+
+<div class="ship s1">
+🚢 医疗舰A
+</div>
+
+
+<div class="ship warning s2">
+🚢 战斗舰B
+</div>
+
+
+
+<div class="ship s3">
+🚢 支援舰C
+</div>
+
+
+<div class="attack">
+⚠
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+    <h2>
+        🩸 全域伤员态势
+    </h2>
+
+    <div class="injury">
+
+        <div>
+            <div class="num danger">
+                8
+            </div>
+            <p>危重伤员</p>
+        </div>
+
+        <div>
+            <div class="num middle">
+                15
+            </div>
+            <p>重伤员</p>
+        </div>
+
+        <div>
+            <div class="num safe">
+                20
+            </div>
+            <p>轻伤员</p>
+        </div>
+
+        <div>
+            <div class="num">
+                5
+            </div>
+            <p>待评估</p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card">
+
+<h2>
+📊 全域伤员统计分析
+</h2>
+
+<div class="analysis-row">
+
+    <div class="analysis-item">
+        <img src="injury_distribution.png">
+    </div>
+
+    <div class="analysis-item">
+        <img src="injury_category.png">
+    </div>
+
+    <div class="analysis-item">
+        <img src="risk_prediction.png">
+    </div>
+
+    <div class="analysis-item">
+        <img src="ship_patient_distribution.png">
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<div class="card ai">
+
+
+<h2>
+🤖 医学专家大模型
+</h2>
+
+
+
+<div class="chat">
+
+
+<p class="user">
+
+👨‍⚕️ 医生：
+
+舰艇爆炸事故，
+患者血压70/40，
+SpO₂ 85%，如何处置？
+
+</p>
+
+
+
+<p class="robot">
+
+🤖 医学专家模型：
+
+<br>
+
+正在检索：
+<br>
+
+✔ 海上创伤数据库
+
+<br>
+
+✔ ELSO ECMO指南
+
+<br>
+
+✔ 爆炸伤救治知识图谱
+
+<br><br>
+
+
+综合判断：
+
+<br>
+
+① 失血性休克Ⅰ级危重
+
+<br>
+
+② 启动快速输血复苏
+
+<br>
+
+③ 进行动态氧合监测
+
+<br>
+
+④ ECMO团队待命
+
+
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="card">
+
+
+<h2>
+🔎 GraphRAG知识检索
+</h2>
+
+
+<div class="rag-item">
+爆炸伤 → 失血 → 休克
+</div>
+
+
+<div class="rag-item">
+肺损伤 → ARDS → ECMO
+</div>
+
+
+<div class="rag-item">
+海上转运 → 生命支持规范
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<div class="card">
+
+
+<h2>
+📋 实时伤员监测
+</h2>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+编号
+</th>
+
+<th>
+伤情
+</th>
+
+<th>
+生命指标
+</th>
+
+<th>
+AI判断
+</th>
+
+
+</tr>
+
+
+
+<tr>
+
+<td>
+001
+</td>
+
+<td>
+爆炸伤
+</td>
+
+<td>
+BP 70/40 SpO₂85%
+</td>
+
+<td class="danger">
+休克风险90%
+</td>
+
+
+</tr>
+
+
+<tr>
+
+<td>
+002
+</td>
+
+<td>
+胸部创伤
+</td>
+
+<td>
+SpO₂92%
+</td>
+
+<td>
+肺损伤风险
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+<!-- ==========================
+医学知识图谱
+========================== -->
+
+
+<div class="card">
+
+    <h2>
+        🕸 海上重症跨模态医学知识图谱
+    </h2>
+
+    <div class="knowledge-image">
+
+        <img src="tupu.png" alt="海上重症跨模态医学知识图谱">
+
+    </div>
+
+</div>
+
+
+
+
+
+<!-- ==========================
+专家辅助决策链
+========================== -->
+
+
+<div class="card">
+
+
+<h2>
+🧠 AI辅助决策推理链
+</h2>
+
+
+
+<div class="data">
+
+
+<div>
+
+<h3>
+输入数据
+</h3>
+
+<p>
+生命体征
+<br>
+影像
+<br>
+病历
+</p>
+
+</div>
+
+
+
+<div>
+
+<h3>
+知识检索
+</h3>
+
+<p>
+医学KG
+<br>
+ELSO指南
+<br>
+病例库
+</p>
+
+</div>
+
+
+
+<div>
+
+<h3>
+模型推理
+</h3>
+
+<p>
+Qwen3-14B
+<br>
+GraphRAG
+<br>
+Agent
+</p>
+
+</div>
+
+
+
+<div>
+
+<h3>
+输出方案
+</h3>
+
+<p>
+治疗建议
+<br>
+转运策略
+<br>
+风险预测
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- ==========================
+舰艇协同数据库
+========================== -->
+
+
+<div class="card">
+
+
+<h2>
+🚢 多舰艇医疗协同数据库
+</h2>
+
+
+<table>
+
+
+<tr>
+
+<th>
+舰艇
+</th>
+
+<th>
+位置
+</th>
+
+<th>
+医疗能力
+</th>
+
+<th>
+状态
+</th>
+
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+医疗舰001
+</td>
+
+<td>
+东部海域
+</td>
+
+<td>
+ICU ECMO手术室
+</td>
+
+<td style="color:#00ff99">
+在线
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+护卫舰023
+</td>
+
+<td>
+任务区域A
+</td>
+
+<td>
+急救单元
+</td>
+
+<td style="color:#00ff99">
+在线
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+运输舰006
+</td>
+
+<td>
+待命区域
+</td>
+
+<td>
+伤员转运
+</td>
+
+<td style="color:#ffc857">
+待命
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+<!-- ==========================
+数据中心
+========================== -->
+
+
+<div class="card">
+
+
+<h2>
+📊 智能医疗数据中心
+</h2>
+
+
+
+<div class="data">
+
+
+<div>
+
+<h1>
+12
+</h1>
+
+舰艇接入
+
+</div>
+
+
+
+<div>
+
+<h1>
+348
+</h1>
+
+历史病例
+
+</div>
+
+
+
+<div>
+
+<h1>
+95%
+</h1>
+
+AI预测准确率
+
+</div>
+
+
+
+<div>
+
+<h1>
+24ms
+</h1>
+
+响应延迟
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- ==========================
+底部系统状态
+========================== -->
+
+
+<div class="card">
+
+
+<h2>
+⚙ 系统运行状态
+</h2>
+
+
+
+<p>
+
+✔ 多舰艇数据同步正常
+
+</p>
+
+
+<p>
+
+✔ 医学知识库更新完成
+
+</p>
+
+
+<p>
+
+✔ GraphRAG检索服务运行中
+
+</p>
+
+
+<p>
+
+✔ 医学专家大模型在线
+
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<script>
+
+
+/*
+==============================
+医学知识图谱动态效果
+==============================
+*/
+
+
+let nodes=document.querySelectorAll(".node");
+
+
+nodes.forEach(
+node=>{
+
+
+node.onmouseover=function(){
+
+
+this.style.transform="scale(1.15)";
+
+this.style.transition="0.3s";
+
+
+}
+
+
+
+node.onmouseout=function(){
+
+
+this.style.transform="scale(1)";
+
+
+}
+
+
+}
+
+);
+
+
+
+
+
+/*
+==============================
+AI推理模拟
+==============================
+*/
+
+
+let aiText=[
+
+"正在分析生命体征...",
+
+
+"正在匹配爆炸伤病例...",
+
+
+"正在调用医学知识图谱...",
+
+
+"正在生成救治方案..."
+
+
+];
+
+
+
+let index = 0;
+
+let maxAnalysis = 2;   // 最大分析次数
+
+
+let timer = setInterval(()=>{
+
+
+let ai=document.querySelector(".robot");
+
+
+if(ai && index < maxAnalysis){
+
+
+ai.innerHTML +=
+"<br><br>🔹 "+
+aiText[index];
+
+
+index++;
+
+
+}
+
+
+// 达到次数后停止
+
+if(index >= maxAnalysis){
+
+
+clearInterval(timer);
+
+
+ai.innerHTML +=
+"<br><br>✅ 医学专家分析完成";
+
+
+}
+
+
+
+},4000);
+
+
+
+
+
+/*
+==============================
+舰艇状态闪烁
+==============================
+*/
+
+
+setInterval(()=>{
+
+
+let danger=document.querySelector(".warning");
+
+
+if(danger){
+
+
+danger.style.boxShadow=
+"0 0 20px red";
+
+
+setTimeout(()=>{
+
+
+danger.style.boxShadow="none";
+
+
+},800);
+
+
+}
+
+
+},1500);
+
+
+
+</script>
+
+
+
+
+</body>
+
+
+</html>
